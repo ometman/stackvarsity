@@ -6,7 +6,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const userRoutes = require('./routes/userRoutes');
-const courseRoutes = require('./routes/courseRoutes');
+// const courseRoutes = require('./src/routes/courseRoutes');
 
 const app = express();
 
@@ -16,6 +16,6 @@ app.use(bodyParser.json());
 
 // Routes
 app.use('/api/users', userRoutes);
-app.use('/api/courses', courseRoutes);
+// app.use('/api/courses', courseRoutes);
 
 module.exports = app;
