@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "stackvarsity": "file:.."
+  }
+}
