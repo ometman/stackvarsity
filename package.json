@@ -5,5 +5,20 @@
     "postcss": "^8.4.49",
     "react-hook-form": "^7.53.2",
     "tailwindcss": "^3.4.15"
-  }
+  },
+  "name": "stackvarsity",
+  "version": "1.0.0",
+  "description": "A modern and interactive platform for learning web development, featuring courses, quizzes, progress tracking, gamification, and a community forum.",
+  "main": "tailwind.config.js",
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\"",
+    "install-all": "npm install --prefix backend && npm install --prefix frontend"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
