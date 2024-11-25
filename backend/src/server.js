@@ -10,19 +10,19 @@ app.listen(PORT, () => {
 });
 
 // Testing Root
-app.get('/', (req, res) => {
-  res.send('Welcome to STACKVARSITY: Your Web Development Learning Platform');
-});
+// app.get('/', (req, res) => {
+//   res.send('Welcome to STACKVARSITY: Your Web Development Learning Platform');
+// });
 
 
 // Testing REST API
-// app.get('/', (req, res) => {
-//   res.json({
-//     message: 'Welcome to STACKVARSITY: Your Web Development Learning Platform API',
-//     routes: {
-//       users: '/api/users',
-//       courses: '/api/courses',
-//     },
-//   });
-// });
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Welcome to STACKVARSITY: Your Web Development Learning Platform API',
+    routes: {
+      users: '/api/users',
+      courses: '/api/courses',
+    },
+  });
+});
 
