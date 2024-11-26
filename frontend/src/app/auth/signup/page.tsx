@@ -31,7 +31,9 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-md bg-white p-6 rounded shadow">
-        <h1 className="text-2xl text-blue-600 font-bold mb-4 text-center">Sign Up</h1>
+        <h1 className="text-2xl text-blue-600 font-bold mb-4 text-center">
+          Stackvarsity Sign Up
+        </h1>
         {error && <p className="text-red-600 mb-4">{error}</p>}
         {success && <p className="text-green-600 mb-4">{success}</p>}
         <input
