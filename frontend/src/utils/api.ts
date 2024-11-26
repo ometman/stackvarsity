@@ -1,7 +1,9 @@
-import axios from 'axios';
+// utils/api.ts
+import axios from "axios";
 
-const api = axios.create({
-  baseURL: 'http://localhost:5000/api',
+const apiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  timeout: 10000,
 });
 
-export default api;
+export default apiClient;

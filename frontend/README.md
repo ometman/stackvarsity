@@ -34,3 +34,48 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+*Folder Structure*
+
+frontend/
+├── public/                   # Public assets accessible in the browser
+│   ├── favicon.ico           # Favicon for the app
+│   ├── images/               # Static images
+│   └── robots.txt            # SEO optimization
+├── src/                      # Source code
+│   ├── app/                  # Next.js App Router structure
+│   │   ├── layout.tsx        # Shared layout for the app
+│   │   ├── globals.css       # Global styles
+│   │   ├── dashboard/        # Dashboard page
+│   │   │   └── page.tsx      # Main dashboard content
+│   │   └── auth/             # Authentication-related pages
+│   │       ├── login/
+│   │       │   └── page.tsx  # Login page
+│   │       ├── signup/
+│   │       │   └── page.tsx  # Signup page
+│   ├── components/           # Reusable UI components
+│   │   ├── Navbar.tsx        # Navigation bar
+│   │   ├── Footer.tsx        # Footer section
+│   │   ├── Button.tsx        # Reusable button component
+│   │   ├── InputField.tsx    # Input field component
+│   │   └── Loader.tsx        # Loading spinner
+│   ├── features/             # Feature-based structure for larger apps
+│   │   ├── auth/             # Auth-specific logic
+│   │   │   ├── api.ts        # API calls for login/signup
+│   │   │   └── hooks.ts      # Custom hooks for authentication
+│   │   └── courses/          # Course-specific logic
+│   │       ├── api.ts        # API calls for courses
+│   │       └── hooks.ts      # Custom hooks for course management
+│   ├── lib/                  # Utility libraries
+│   │   ├── axios.ts          # Axios instance for API requests
+│   │   └── helpers.ts        # Helper functions
+│   ├── styles/               # Additional CSS or SCSS files
+│   │   ├── variables.css     # CSS variables
+│   │   └── components.css    # Component-specific styles
+│   └── config/               # Configuration files
+│       └── constants.ts      # Global constants (e.g., API URLs)
+├── .env.local                # Environment variables for the frontend
+├── next.config.js            # Next.js configuration
+├── tsconfig.json             # TypeScript configuration
+├── package.json              # Project dependencies and scripts
+└── README.md                 # Frontend documentation

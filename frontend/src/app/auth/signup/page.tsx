@@ -1,6 +1,8 @@
 "use client";
 
+import { useRouter } from 'next/navigation';
 import { useState } from "react";
+import Image from 'next/image';
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
@@ -8,6 +10,7 @@ export default function SignupPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const router = useRouter();
 
   const handleSignup = async () => {
     try {
@@ -19,60 +22,79 @@ export default function SignupPage() {
       }
 
       // Placeholder for signup logic
-      console.log("Signing up:", { email, password });
-      setError("");
-      setSuccess("Signup successful! You can now log in.");
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });      
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Signup failed");
+      }
+
+      // On successful signup, redirect to the dashboard
+      router.push("/dashboard");
     } catch (err: any) {
       setError(err.message || "Signup failed");
-      setSuccess("");
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="w-full max-w-md bg-white p-6 rounded shadow">
-        <h1 className="text-2xl text-blue-600 font-bold mb-4 text-center">
-          Stackvarsity Sign Up
-        </h1>
-        {error && <p className="text-red-600 mb-4">{error}</p>}
-        {success && <p className="text-green-600 mb-4">{success}</p>}
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-full border px-3 py-2 mb-4 rounded"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="w-full border px-3 py-2 mb-4 rounded"
-        />
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          className="w-full border px-3 py-2 mb-4 rounded"
-        />
-        <button
-          onClick={handleSignup}
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
-        >
-          Sign Up
-        </button>
-        <p className="text-center mt-4">
-          Already have an account?{" "}
-          <a
-            href="/auth/login"
-            className="text-blue-600 hover:underline font-semibold"
-          >
-            Login
-          </a>
-        </p>
-      </div>
-    </div>
-  );
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+  <div className="flex items-center mb-8 text-center">
+    <Image
+      src="/images/stkva-logo.png" // Path to your logo inside the public directory
+      alt="Stackvarsity Logo"
+      width={150} // Adjust width as needed
+      height={50} // Adjust height as needed
+    />
+  </div>
+
+  <div className="w-full max-w-md bg-white p-6 rounded shadow">
+    <h1 className="text-2xl text-blue-600 font-bold mb-4 text-center">Sign Up</h1>
+    {error && <p className="text-red-600 mb-4">{error}</p>}
+    {success && <p className="text-green-600 mb-4">{success}</p>}
+
+    <input
+      type="email"
+      placeholder="Email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      className="w-full border px-3 py-2 mb-4 rounded"
+    />
+
+    <input
+      type="password"
+      placeholder="Password"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      className="w-full border px-3 py-2 mb-4 rounded"
+    />
+
+    <input
+      type="password"
+      placeholder="Confirm Password"
+      value={confirmPassword}
+      onChange={(e) => setConfirmPassword(e.target.value)}
+      className="w-full border px-3 py-2 mb-4 rounded"
+    />
+
+    <button
+      onClick={handleSignup}
+      className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+    >
+      Sign Up
+    </button>
+
+    <p className="text-center mt-4">
+      Already have an account?{" "}
+      <a href="/auth/login" className="text-blue-600 hover:underline font-semibold">
+        Login
+      </a>
+    </p>
+  </div>
+</div>
+ 
+  ); 
 }
