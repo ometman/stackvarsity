@@ -17,12 +17,13 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.21.1",
+    "jest": "^29.7.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
     "stackvarsity": "file:.."
   },
   "devDependencies": {
-    "@types/node": "^22.9.4",
+    "@types/node": "^22.10.0",
     "nodemon": "^3.1.7"
   }
 }
