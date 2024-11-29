@@ -35,7 +35,7 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-*Folder Structure*
+**Folder Structure**
 
 frontend/
 ├── public/                   # Public assets accessible in the browser
@@ -79,3 +79,4 @@ frontend/
 ├── tsconfig.json             # TypeScript configuration
 ├── package.json              # Project dependencies and scripts
 └── README.md                 # Frontend documentation
+user1@example.com password123

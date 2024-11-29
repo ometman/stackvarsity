@@ -21,7 +21,8 @@ export default function LoginPage() {
     setIsLoading(true);
     setError(""); // Clear previous errors
     try {
-      const response = await apiClient.post("/auth/login", { email, password });
+      const response = await apiClient.post("/api/users/login", { email, password });
+      console.log(response)
       router.push("/dashboard"); // Navigate to the dashboard on successful login
     } catch (error: any) {
       setError(error.response?.data?.message || "An error occurred. Please try again.");
@@ -31,7 +32,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
+<>
+  <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
       <div className="flex items-center mb-8">
         <Image
           src="/images/stkva-logo.png"
@@ -47,19 +49,22 @@ export default function LoginPage() {
         {error && <p className="text-red-600 mb-4">{error}</p>}
 
         <input
+          autoComplete="true"
+          name="email"
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border px-3 py-2 mb-4 rounded"
+          className="w-full text-gray-500 border px-3 py-2 mb-4 rounded"
         />
 
         <input
+          name="password"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full border px-3 py-2 mb-6 rounded"
+          className="w-full text-gray-500 border px-3 py-2 mb-6 rounded"
         />
 
         <button
@@ -87,5 +92,6 @@ export default function LoginPage() {
         </p>
       </div>
     </div>
+    </>
   );
 }
