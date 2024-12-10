@@ -3,6 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import Image from 'next/image';
+import apiClient from '../../../utils/api';
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
@@ -14,31 +15,33 @@ export default function SignupPage() {
 
   const handleSignup = async () => {
     try {
+      // Validate inputs
       if (!email || !password || !confirmPassword) {
         throw new Error("All fields are required");
       }
       if (password !== confirmPassword) {
         throw new Error("Passwords do not match");
       }
-
-      // Placeholder for signup logic
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
-      });      
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Signup failed");
+  
+      // Make API call using apiClient
+      const response = await apiClient.post('/api/users/signup', {
+        email,
+        password,
+      });
+  
+      // If successful, redirect to the dashboard
+      if (response.status === 201) {
+        router.push("/dashboard");
+      } else {
+        console.log("handler error", "someting when wrong")
+        throw new Error(response.data?.message || "Signup failed");
       }
-
-      // On successful signup, redirect to the dashboard
-      router.push("/dashboard");
     } catch (err: any) {
-      setError(err.message || "Signup failed");
+      // Handle errors
+      setError(err.response?.data?.message || err.message || "Signup failed");
     }
   };
+  
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
@@ -57,20 +60,22 @@ export default function SignupPage() {
     {success && <p className="text-green-600 mb-4">{success}</p>}
 
     <input
+      autoComplete='true'
+      name="email"
       type="email"
       placeholder="Email"
       value={email}
       onChange={(e) => setEmail(e.target.value)}
-      className="w-full border px-3 py-2 mb-4 rounded"
+      className="w-full text-gray-500 border px-3 py-2 mb-4 rounded"
     />
 
     <input
+      name="password"
       type="password"
       placeholder="Password"
       value={password}
       onChange={(e) => setPassword(e.target.value)}
-      className="w-full border px-3 py-2 mb-4 rounded"
-    />
+      className="w-full text-gray-500 border px-3 py-2 mb-6 rounded"    />
 
     <input
       type="password"
