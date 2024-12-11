@@ -54,7 +54,7 @@ export default function SignupPage() {
     />
   </div>
 
-  <div className="w-full max-w-md bg-white p-6 rounded shadow">
+<div className="w-full max-w-md bg-white p-6 rounded shadow">
     <h1 className="text-2xl text-blue-600 font-bold mb-4 text-center">Sign Up</h1>
     {error && <p className="text-red-600 mb-4">{error}</p>}
     {success && <p className="text-green-600 mb-4">{success}</p>}
@@ -103,3 +103,5 @@ export default function SignupPage() {
  
   ); 
 }
+
+// consider later using a form and add onChange handler and implement formData call
