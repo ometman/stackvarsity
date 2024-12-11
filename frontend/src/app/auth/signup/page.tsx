@@ -1,6 +1,6 @@
-"use client";
+// "use client";
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { useState } from "react";
 import Image from 'next/image';
 import apiClient from '../../../utils/api';
@@ -31,7 +31,7 @@ export default function SignupPage() {
   
       // If successful, redirect to the dashboard
       if (response.status === 201) {
-        router.push("/dashboard");
+        router.push("/onboarding");
       } else {
         console.log("handler error", "someting when wrong")
         throw new Error(response.data?.message || "Signup failed");
