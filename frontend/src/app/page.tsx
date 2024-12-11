@@ -1,4 +1,5 @@
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100">
@@ -9,6 +10,7 @@ export default function Home() {
           Join our platform to learn, practice, and master web development skills.
         </p>
       </main>
+      <Footer />
     </div>
   );
 }
