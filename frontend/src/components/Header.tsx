@@ -4,26 +4,25 @@ import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaUserCircle, FaBell, FaSearch, FaBars, FaTimes } from "react-icons/fa";
+import { useAuth } from "../app/context/AuthContext"; // Import useAuth
 
-const Header = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
+const Header = () => {
   const router = useRouter();
+  const { isAuthenticated, logout } = useAuth(); // Access auth state and logout function
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    // Logout logic here
-    console.log("User logged out");
+    logout(); // Call logout from context
     router.push("/login");
   };
 
   return (
-    <header className="bg-blue-600 text-white shadow-lg">
+    <header className="bg-blue-600 text-white shadow-md">
       <div className="container mx-auto flex items-center justify-between p-4">
         {/* Logo */}
-        <div className="logo">
-          <h1 className="text-2xl font-bold">
-            <Link href="/">StackVarsity</Link>
-          </h1>
-        </div>
+        <h1 className="text-2xl font-bold">
+          <Link href="/">StackVarsity</Link>
+        </h1>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
@@ -75,7 +74,7 @@ const Header = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
             <>
               <Link
                 href="/auth/login"
-                className="hover:bg-gray-100 text-blue-600 bg-white px-4 py-1 rounded"
+                className="text-blue-600 bg-white px-4 py-1 rounded hover:bg-gray-100"
               >
                 Login
               </Link>
@@ -90,7 +89,7 @@ const Header = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
 
           {/* Hamburger Menu */}
           <button
-            className="md:hidden text-xl"
+            className="md:hidden text-2xl focus:outline-none"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}

@@ -4,14 +4,15 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
 import apiClient from "../../../utils/api"; // Importing the pre-configured axios instance
-import { useAuth } from "../../context/AuthContext";
+// import { useAuth } from "../../context/AuthContext";
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const { login } = useAuth();
+  // const { login } = useAuth();
 
 
   const handleLogin = async () => {
@@ -24,9 +25,9 @@ export default function LoginPage() {
     setError(""); // Clear previous errors
     try {
       const response = await apiClient.post("/api/users/login", { email, password });
-      const { token } = await response.data.json();
-      localStorage.setItem("authToken", token)
-      login(token);
+      // const { token } = await response.data.json();
+      // localStorage.setItem("authToken", token)
+      // login(token);
       router.push("/dashboard"); // Navigate to the dashboard on successful login
     } catch (error: any) {
       setError(error.response?.data?.message || "An error occurred. Please try again.");

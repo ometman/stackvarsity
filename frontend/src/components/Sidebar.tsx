@@ -3,7 +3,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { FaHome, FaBook, FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
 
 const Sidebar = () => {
@@ -26,31 +26,31 @@ const Sidebar = () => {
 
       <div className="menu">
         <Link href="/dashboard">
-          <a className="menu-item">
+          <p className="menu-item">
             <FaHome />
             {isOpen && <span>Home</span>}
-          </a>
+          </p>
         </Link>
 
         <Link href="/courses">
-          <a className="menu-item">
+          <p className="menu-item">
             <FaBook />
             {isOpen && <span>Courses</span>}
-          </a>
+          </p>
         </Link>
 
         <Link href="/profile">
-          <a className="menu-item">
+          <p className="menu-item">
             <FaUser />
             {isOpen && <span>Profile</span>}
-          </a>
+          </p>
         </Link>
 
         <Link href="/settings">
-          <a className="menu-item">
+          <p className="menu-item">
             <FaCog />
             {isOpen && <span>Settings</span>}
-          </a>
+          </p>
         </Link>
 
         <button className="menu-item logout" onClick={handleLogout}>
