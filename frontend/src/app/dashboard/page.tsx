@@ -1,6 +1,6 @@
-// // dashboard/page.tsx
+// dashboard/page.tsx
 // import Link from 'next/link';
-// import Header from '../components/Header';
+// import Header from '../../components/Header';
 
 // export default function Home() {
 //   return (
@@ -19,10 +19,15 @@
 //   );
 // }
 
-
+import { useAuth } from "../context/AuthContext";
 import DashboardView from "./DashboardView";
 
 export default function Dashboard() {
+   const { isAuthenticated, token } = useAuth();
+
+   if (!isAuthenticated) {
+    return (<p>You are not authenticated</p>)
+   }
   return <DashboardView />;
 }
 
