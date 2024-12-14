@@ -1,15 +1,135 @@
-import Link from 'next/link';
+"use client";
 
-export default function Header () {
-    return (
-        <header className="bg-blue-600 text-white p-4">
-            <div className="container mx-auto flex justify-between">
-            <h1 className="text-xl font-bold">StackVarsity</h1>
-            <nav>
-                <Link href="/auth/login" className="mr-4">Login</Link>
-                <Link href="/auth/signup">Signup</Link>
-            </nav>
-            </div>
-        </header>
-    );
- }
+import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { FaUserCircle, FaBell, FaSearch, FaBars, FaTimes } from "react-icons/fa";
+
+const Header = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
+  const router = useRouter();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleLogout = () => {
+    // Logout logic here
+    console.log("User logged out");
+    router.push("/login");
+  };
+
+  return (
+    <header className="bg-blue-600 text-white shadow-lg">
+      <div className="container mx-auto flex items-center justify-between p-4">
+        {/* Logo */}
+        <div className="logo">
+          <h1 className="text-2xl font-bold">
+            <Link href="/">StackVarsity</Link>
+          </h1>
+        </div>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden md:flex space-x-6">
+          {!isAuthenticated ? (
+            <>
+              <Link href="/about" className="hover:text-gray-300">
+                About
+              </Link>
+              <Link href="/courses" className="hover:text-gray-300">
+                Courses
+              </Link>
+              <Link href="/contact" className="hover:text-gray-300">
+                Contact
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/dashboard" className="hover:text-gray-300">
+                Dashboard
+              </Link>
+              <Link href="/my-courses" className="hover:text-gray-300">
+                My Courses
+              </Link>
+              <Link href="/progress" className="hover:text-gray-300">
+                Progress
+              </Link>
+            </>
+          )}
+        </nav>
+
+        {/* Header Actions */}
+        <div className="flex items-center space-x-4">
+          {isAuthenticated ? (
+            <>
+              <FaSearch className="text-xl cursor-pointer hover:text-gray-300" />
+              <FaBell className="text-xl cursor-pointer hover:text-gray-300" />
+              <FaUserCircle
+                className="text-2xl cursor-pointer hover:text-gray-300"
+                title="Profile"
+              />
+              <button
+                onClick={handleLogout}
+                className="bg-red-500 hover:bg-red-600 text-white px-4 py-1 rounded"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/auth/login"
+                className="hover:bg-gray-100 text-blue-600 bg-white px-4 py-1 rounded"
+              >
+                Login
+              </Link>
+              <Link
+                href="/auth/signup"
+                className="bg-gray-100 text-blue-600 px-4 py-1 rounded hover:bg-white"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
+
+          {/* Hamburger Menu */}
+          <button
+            className="md:hidden text-xl"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <FaTimes /> : <FaBars />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <nav className="md:hidden bg-blue-700 text-white space-y-4 p-4">
+          {!isAuthenticated ? (
+            <>
+              <Link href="/about" className="block hover:text-gray-300">
+                About
+              </Link>
+              <Link href="/courses" className="block hover:text-gray-300">
+                Courses
+              </Link>
+              <Link href="/contact" className="block hover:text-gray-300">
+                Contact
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/dashboard" className="block hover:text-gray-300">
+                Dashboard
+              </Link>
+              <Link href="/my-courses" className="block hover:text-gray-300">
+                My Courses
+              </Link>
+              <Link href="/progress" className="block hover:text-gray-300">
+                Progress
+              </Link>
+            </>
+          )}
+        </nav>
+      )}
+    </header>
+  );
+};
+
+export default Header;
