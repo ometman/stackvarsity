@@ -1,5 +1,11 @@
 const pool = require('../utils/db');
 
+// Mock Data
+const courses = [
+  { id: 1, title: 'React Basics', category: 'Web Development', description: 'Learn React from scratch.', duration: '10 hours' },
+  { id: 2, title: 'Node.js Mastery', category: 'Backend', description: 'Master Node.js and Express.', duration: '15 hours' },
+  { id: 3, title: 'UI/UX Design', category: 'Design', description: 'Understand the fundamentals of UI/UX.', duration: '8 hours' },
+];
 // Get all courses
 exports.getCourses = async (req, res) => {
   try {
