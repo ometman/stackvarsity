@@ -5,6 +5,10 @@ import { useState } from "react";
 import Image from "next/image";
 import apiClient from "../../../utils/api"; // Importing the pre-configured axios instance
 import { useAuth } from "../../context/AuthContext";
+import dynamic from "next/dynamic";
+
+const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
+const Footer = dynamic(() => import("../../../components/Footer"), { ssr: false });
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -24,11 +28,11 @@ export default function LoginPage() {
     setIsLoading(true);
     setError(""); // Clear previous errors
     try {
-      const response = await apiClient.post("/api/users/login", { email, password });
-      const { token } = await response.data.json();
+      const res = await apiClient.post("/api/users/login", { email, password });
+      const { token } = await res.data;
       localStorage.setItem("authToken", token)
       login(token);
-      router.push("/dashboard"); // Navigate to the dashboard on successful login
+      router.push("/dashboard"); // Navigate to the dashboard
     } catch (error: any) {
       setError(error.response?.data?.message || "An error occurred. Please try again.");
     } finally {
@@ -38,6 +42,8 @@ export default function LoginPage() {
 
   return (
 <>
+
+    <Header />
   <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
       <div className="flex items-center mb-8">
         <Image
@@ -97,6 +103,7 @@ export default function LoginPage() {
         </p>
       </div>
     </div>
+    <Footer />
     </>
   );
 }

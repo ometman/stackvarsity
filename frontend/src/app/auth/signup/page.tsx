@@ -4,6 +4,10 @@ import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import Image from 'next/image';
 import apiClient from '../../../utils/api';
+import dynamic from 'next/dynamic';
+
+const Header = dynamic(() => import("../../../components/Header"), { ssr: false});
+const Footer = dynamic(() => import("../../../components/Footer"), {ssr: false});
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
@@ -44,6 +48,8 @@ export default function SignupPage() {
   
 
   return (
+  <>
+    <Header />
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
   <div className="flex items-center mb-8 text-center">
     <Image
@@ -100,7 +106,8 @@ export default function SignupPage() {
     </p>
   </div>
 </div>
- 
+ <Footer />
+ </>
   ); 
 }
 

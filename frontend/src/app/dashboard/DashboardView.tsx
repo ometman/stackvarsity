@@ -1,11 +1,10 @@
-"use client";
 
 import DashboardLayout from "./DashboardLayout";
-import CourseList from "./CourseList";
+import CourseList from "../courses/CourseList";
 
 const DashboardView = () => {
   return (
-    <DashboardLayout>
+    <DashboardLayout >
       <h1>Welcome to Your DashboardLayout </h1>
       <CourseList />
     </DashboardLayout>

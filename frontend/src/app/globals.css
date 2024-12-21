@@ -9,7 +9,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #f3f4f6;
     --foreground: #ededed;
   }
 }
@@ -30,3 +30,25 @@ button:hover {
   background-color: #0056b3;
 }
 
+
+/* Add this to your CSS file */
+.dropdown-menu {
+  opacity: 0;
+  transform: translateY(4px); 
+  transition: all 0.3s ease-in-out; 
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  transform: translateY(0); 
+}
+
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
+}

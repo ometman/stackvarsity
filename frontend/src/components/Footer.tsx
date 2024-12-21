@@ -56,7 +56,7 @@ const Footer = () => {
           background-color: #1a1a1a;
           color: #ffffff;
           padding: 40px 20px;
-          margin-top: 142px;
+          margin: 0;
         }
 
         .footer-container {

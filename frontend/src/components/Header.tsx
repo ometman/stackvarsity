@@ -13,14 +13,14 @@ const Header = () => {
 
   const handleLogout = () => {
     logout(); // Call logout from context
-    router.push("/login");
+    router.push("/");
   };
 
   return (
-    <header className="bg-blue-600 text-white shadow-md">
-      <div className="container mx-auto flex items-center justify-between p-4">
+    <header className="bg-indigo-50 text-l shadow-md font-bold text-blue-700 transition-colors duration-300">
+     <div className="container mx-auto flex items-center justify-between p-4">
         {/* Logo */}
-        <h1 className="text-2xl font-bold">
+        <h1 className="text-2xl font-bold hover:text-blue-300">
           <Link href="/">StackVarsity</Link>
         </h1>
 
@@ -28,13 +28,13 @@ const Header = () => {
         <nav className="hidden md:flex space-x-6">
           {!isAuthenticated ? (
             <>
-              <Link href="/about" className="hover:text-gray-300">
+              <Link href="/about" className="hover:text-blue-300">
                 About
               </Link>
-              <Link href="/courses" className="hover:text-gray-300">
+              <Link href="/courses" className="hover:text-blue-300">
                 Courses
               </Link>
-              <Link href="/contact" className="hover:text-gray-300">
+              <Link href="/contact" className="hover:text-blue-300">
                 Contact
               </Link>
             </>
@@ -74,13 +74,13 @@ const Header = () => {
             <>
               <Link
                 href="/auth/login"
-                className="text-blue-600 bg-white px-4 py-1 rounded hover:bg-gray-100"
+                className="text-blue-600 bg-white px-4 py-1 rounded hover:bg-blue-600 hover:text-white active:bg-green-600"
               >
                 Login
               </Link>
               <Link
                 href="/auth/signup"
-                className="bg-gray-100 text-blue-600 px-4 py-1 rounded hover:bg-white"
+                className="text-blue-600 bg-white px-4 py-1 rounded hover:bg-blue-600 hover:text-white active:bg-green-600"
               >
                 Sign Up
               </Link>

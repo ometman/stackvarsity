@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL, // Update with your database connection string
+  connectionString: process.env.DATABASE_URL, // Update database connection string
 });
 
 export default async function handler(req, res) {
@@ -14,7 +14,6 @@ export default async function handler(req, res) {
       if (!email || !password) {
         return res.status(400).json({ message: "Email and password are required." });
       }
-
       // Find the user in the database
       const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
       if (user.rows.length === 0) {
@@ -25,12 +24,10 @@ export default async function handler(req, res) {
       if (!validPassword) {
         return res.status(401).json({ message: "Invalid credentials." });
       }
-
       // Generate JWT token
       const token = jwt.sign({ userId: user.rows[0].id }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
-
       res.status(200).json({ message: "Login successful!", token });
     } catch (error) {
       console.error(error);
