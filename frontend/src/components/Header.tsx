@@ -8,7 +8,7 @@ import { useAuth } from "../app/context/AuthContext"; // Import useAuth
 
 const Header = () => {
   const router = useRouter();
-  const { isAuthenticated, logout } = useAuth(); // Access auth state and logout function
+  const { isAuthenticated, logout, isUser } = useAuth(); // Access auth state and logout function
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
@@ -49,6 +49,10 @@ const Header = () => {
               <Link href="/progress" className="hover:text-gray-300">
                 Progress
               </Link>
+              <Link href="/discussion" className="hover:text-gray-300">
+                Discussion
+              </Link>
+              
             </>
           )}
         </nav>
@@ -57,6 +61,7 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           {isAuthenticated ? (
             <>
+              <p>Welcome {isUser?.role}!</p>
               <FaSearch className="text-xl cursor-pointer hover:text-gray-300" />
               <FaBell className="text-xl cursor-pointer hover:text-gray-300" />
               <FaUserCircle
@@ -122,6 +127,9 @@ const Header = () => {
               </Link>
               <Link href="/progress" className="block hover:text-gray-300">
                 Progress
+              </Link>
+              <Link href="/discussion" className="block hover:text-gray-300">
+                Discussion
               </Link>
             </>
           )}

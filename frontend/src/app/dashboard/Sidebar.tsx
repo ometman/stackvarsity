@@ -4,7 +4,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaHome, FaBook, FaUser, FaCog, FaSignOutAlt } from "react-icons/fa";
+import { FaHome, FaBook, FaUser, FaCog, FaSignOutAlt, FaTools, FaClipboardCheck, FaChartPie, FaArchive } from "react-icons/fa";
+import { Fa42Group, FaArrowLeft, FaArrowRight, FaArrowRightArrowLeft, FaBookOpen, FaBoxArchive, FaChartLine, FaGraduationCap, FaPeopleGroup } from "react-icons/fa6";
+import { BsFillBarChartLineFill } from "react-icons/bs";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -21,9 +23,9 @@ const Sidebar = () => {
   return (
     <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <button className="toggle-btn" onClick={toggleSidebar}>
-        {isOpen ? "<" : ">"}
+        {isOpen ? <FaArrowLeft /> : <FaArrowRight />}
       </button>
-
+      
       <div className="menu">
         <Link href="/dashboard">
           <p className="menu-item">
@@ -38,14 +40,42 @@ const Sidebar = () => {
             {isOpen && <span>Courses</span>}
           </p>
         </Link>
-
+        <Link href="/progress">
+          <p className="menu-item">
+            <BsFillBarChartLineFill />
+            {isOpen && <span>Progress</span>}
+          </p>
+        </Link>
+        <Link href="/grades">
+          <p className="menu-item">
+            <FaGraduationCap  />
+            {isOpen && <span>Grades</span>}
+          </p>
+        </Link>
+        <Link href="/resources">
+          <p className="menu-item">
+            <FaBookOpen />
+            {isOpen && <span>Resources</span>}
+          </p>
+        </Link>
+        <Link href="/community">
+          <p className="menu-item">
+            <FaPeopleGroup />
+            {isOpen && <span>Community</span>}
+          </p>
+        </Link>
         <Link href="/profile">
           <p className="menu-item">
             <FaUser />
             {isOpen && <span>Profile</span>}
           </p>
         </Link>
-
+        <Link href="/support">
+          <p className="menu-item">
+            <FaTools />
+            {isOpen && <span>Support</span>}
+          </p>
+        </Link>
         <Link href="/settings">
           <p className="menu-item">
             <FaCog />
@@ -61,8 +91,8 @@ const Sidebar = () => {
 
       <style jsx>{`
         .sidebar {
-          width: ${isOpen ? "200px" : "50px"};
-          background-color: #2d2f33;
+          width: ${isOpen ? "100%" : "30%"};
+          background-color: #1d4fd8;
           color: #fff;
           height: 100vh;
           display: flex;
@@ -116,3 +146,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+// background-color: #2d2f33;

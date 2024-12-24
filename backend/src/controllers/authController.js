@@ -2,7 +2,6 @@ const bcrypt = require('bcrypt');
 const pool = require('../utils/db');
 const jwt = require('jsonwebtoken');
 
-
 exports.registerUser = async (req, res) => {
   const { email, password } = req.body;
 
@@ -34,7 +33,15 @@ exports.loginUser = async (req, res) => {
     const token = jwt.sign({ id: user.id, role: user.role }, process.env.JWT_SECRET, {
       expiresIn: '1h',
     });
-    res.status(200).json({ token });
+    res.status(200).json({ 
+      message: 'Login successful',
+      token,
+      user: {
+        id: user.id,
+        role: user.role,
+        email: user.email,
+      },
+    });
   } catch (error) {
     console.log(error.message)
     res.status(500).json({ error: "error.message" });

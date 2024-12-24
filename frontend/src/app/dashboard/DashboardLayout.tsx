@@ -2,28 +2,26 @@
 
 import React from "react";
 import Header from "../../components/Header";
-import Sidebar from "../../components/Sidebar";
+import Sidebar from "./Sidebar";
 import Footer from "../../components/Footer";
 
-const DashboardLayout = ({ children }) => {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="dashboard-layout">
+    <>
       <Header />
-      <Sidebar />
-      <main className="content">{children}</main>
+        <div className="flex flex-1">
+          {/* Sidebar */}
+          <aside className="w-64 bg-white shadow-md p-1">
+            <Sidebar />
+          </aside>
+
+          {/* Main Content */}
+          <main className="flex-1 p-6 bg-gray-50">
+            {children}
+          </main>
+        </div>
       <Footer />
-      <style jsx>{`
-        .dashboard-layout {
-          display: flex;
-          flex-direction: column;
-          min-height: 100vh;
-        }
-        .content {
-          flex-grow: 1;
-          padding: 20px;
-        }
-      `}</style>
-    </div>
+    </>
   );
 };
 

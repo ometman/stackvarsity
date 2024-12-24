@@ -29,9 +29,8 @@ export default function LoginPage() {
     setError(""); // Clear previous errors
     try {
       const res = await apiClient.post("/api/users/login", { email, password });
-      const { token } = await res.data;
-      localStorage.setItem("authToken", token)
-      login(token);
+      const { token, user } = await res.data;
+      login(token, user);
       router.push("/dashboard"); // Navigate to the dashboard
     } catch (error: any) {
       setError(error.response?.data?.message || "An error occurred. Please try again.");

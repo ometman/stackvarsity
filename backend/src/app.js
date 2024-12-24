@@ -8,7 +8,7 @@ dotenv.config();
 const userRoutes = require('./routes/userRoutes');
 const courseRoutes = require('./routes/courseRoutes');
 const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
-
+  
 const app = express();
 
 // Middleware
