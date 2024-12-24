@@ -2,17 +2,28 @@
 
 import React from "react";
 import Header from "../../components/Header";
-import Sidebar from "./Sidebar";
+import AdminSidebar from "./stackoffice/AdminSidebar";
+import StudentSidebar from "./student/StudentSidebar";
+import { useAuth } from "../context/AuthContext";
+
 import Footer from "../../components/Footer";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  const { isUser } = useAuth();
   return (
     <>
       <Header />
         <div className="flex flex-1">
           {/* Sidebar */}
           <aside className="w-64 bg-white shadow-md p-1">
-            <Sidebar />
+             {/* Conditional Rendering Based on User Role */}
+            {isUser?.role === "basic" && <AdminSidebar />}
+            {isUser?.role === "student" && <StudentSidebar />}
+            {/* Fallback if user role is null */}
+            {isUser?.role === null && (
+              <p className="text-red-500 text-center mt-8">Access Denied</p>
+              )}
+            <AdminSidebar />
           </aside>
 
           {/* Main Content */}

@@ -6,7 +6,7 @@ export function StudentDashboard() {
     return (
       <section>
         <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-700">Welcome back, {isUser?.email}!</h1>
+          <h1 className="text-2xl font-bold text-gray-700">Welcome Back, {isUser?.email}!</h1>
           <p className="text-gray-500">"Empower your learning journey with us."</p>
         </div>
 
