@@ -9,24 +9,15 @@ import {
   FaUser,
   FaCog,
   FaSignOutAlt,
-  FaTools,
   FaClipboardCheck,
-  FaChartPie,
-  FaArchive,
 } from "react-icons/fa";
 import {
-  Fa42Group,
   FaArrowLeft,
   FaArrowRight,
-  FaBookOpen,
-  FaBoxArchive,
   FaChartLine,
-  FaGraduationCap,
-  FaPeopleGroup,
 } from "react-icons/fa6";
-import { BsFillBarChartLineFill } from "react-icons/bs";
 
-const Sidebar = () => {
+const AdminSidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const router = useRouter();
 
@@ -151,5 +142,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
-// background-color: #2d2f33;
+export default AdminSidebar;

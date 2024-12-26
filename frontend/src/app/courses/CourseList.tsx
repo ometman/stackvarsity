@@ -3,6 +3,7 @@ import apiClient from "@/utils/api"; // Ensure apiClient is correctly configured
 import CourseCard from "./CourseCard";
 
 type Course = {
+  map(arg0: (course: any, index: any) => JSX.Element): import("react").ReactNode;
   id: number;
   title: string;
   category: string;

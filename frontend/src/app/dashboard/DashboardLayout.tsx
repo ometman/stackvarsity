@@ -17,13 +17,12 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           {/* Sidebar */}
           <aside className="w-64 bg-white shadow-md p-1">
              {/* Conditional Rendering Based on User Role */}
-            {isUser?.role === "basic" && <AdminSidebar />}
+            {isUser?.role === "admin" && <AdminSidebar />}
             {isUser?.role === "student" && <StudentSidebar />}
             {/* Fallback if user role is null */}
             {isUser?.role === null && (
               <p className="text-red-500 text-center mt-8">Access Denied</p>
               )}
-            <AdminSidebar />
           </aside>
 
           {/* Main Content */}

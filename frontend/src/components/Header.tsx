@@ -61,7 +61,7 @@ const Header = () => {
         <div className="flex items-center space-x-4">
           {isAuthenticated ? (
             <>
-              <p>Welcome {isUser?.role}!</p>
+              <p>Welcome {isUser?.username}!</p>
               <FaSearch className="text-xl cursor-pointer hover:text-gray-300" />
               <FaBell className="text-xl cursor-pointer hover:text-gray-300" />
               <FaUserCircle

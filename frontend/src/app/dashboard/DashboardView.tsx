@@ -28,7 +28,7 @@ const DashboardView = () => {
           }
         </p>
         {/* Conditional Rendering Based on User Role */}
-        {isUser?.role === "basic" && <AdminDashboard />}
+        {isUser?.role === "admin" && <AdminDashboard />}
         {isUser?.role === "student" && <StudentDashboard />}
          {/* Fallback if user role is null */}
          {isUser?.role === null && (

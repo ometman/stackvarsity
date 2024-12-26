@@ -4,11 +4,24 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { FaHome, FaBook, FaUser, FaCog, FaSignOutAlt, FaTools, FaClipboardCheck, FaChartPie, FaArchive } from "react-icons/fa";
-import { Fa42Group, FaArrowLeft, FaArrowRight, FaArrowRightArrowLeft, FaBookOpen, FaBoxArchive, FaChartLine, FaGraduationCap, FaPeopleGroup } from "react-icons/fa6";
+import { 
+  FaHome,
+  FaBook,
+  FaUser,
+  FaCog,
+  FaTools,
+  FaSignOutAlt
+} from "react-icons/fa";
+import { 
+  FaArrowLeft, 
+  FaArrowRight, 
+  FaBookOpen, 
+  FaGraduationCap, 
+  FaPeopleGroup 
+} from "react-icons/fa6";
 import { BsFillBarChartLineFill } from "react-icons/bs";
 
-const Sidebar = () => {
+const StudentSidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
   const router = useRouter();
 
@@ -40,31 +53,31 @@ const Sidebar = () => {
             {isOpen && <span>Courses</span>}
           </p>
         </Link>
-        <Link href="/progress">
+        <Link href="/student/progress">
           <p className="menu-item">
             <BsFillBarChartLineFill />
             {isOpen && <span>Progress</span>}
           </p>
         </Link>
-        <Link href="/grades">
+        <Link href="/student/grades">
           <p className="menu-item">
             <FaGraduationCap  />
             {isOpen && <span>Grades</span>}
           </p>
         </Link>
-        <Link href="/resources">
+        <Link href="/student/resources">
           <p className="menu-item">
             <FaBookOpen />
             {isOpen && <span>Resources</span>}
           </p>
         </Link>
-        <Link href="/community">
+        <Link href="/student/community">
           <p className="menu-item">
             <FaPeopleGroup />
             {isOpen && <span>Community</span>}
           </p>
         </Link>
-        <Link href="/profile">
+        <Link href="/student/profile">
           <p className="menu-item">
             <FaUser />
             {isOpen && <span>Profile</span>}
@@ -145,5 +158,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
-// background-color: #2d2f33;
+export default StudentSidebar;

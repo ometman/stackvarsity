@@ -1,8 +1,11 @@
 import React from "react";
-import Link from "next/link";
+import Link from "next/link";  
+import { courses } from "../../../data/courses";
+
 import { useAuth } from "@/app/context/AuthContext";
 export function StudentDashboard() {
   const { isUser } = useAuth();
+
     return (
       <section>
         <div className="flex items-center justify-between mb-6">
@@ -58,7 +61,37 @@ export function StudentDashboard() {
           </div>
         </div>
 
-       
+         {/* <!-- All Courses Link --> */}
+         <div className="mb-6">
+          <h2 className="text-xl font-bold text-gray-700 mb-4">
+          Want to add a Course?
+          </h2>
+          <button className="bg-blue-600 h-12 text-white rounded-md py-2 px-6 shadow-md hover:bg-blue-700 transition">
+            <span className="font-bold text-lg">Explore Courses</span>
+          </button>
+        </div>
+
+         {/* All Courses Section */}
+      {/* <div className="mb-6">
+        <h2 className="text-xl font-bold text-gray-700 mb-4">Available Courses</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {courses.map((course) => (
+            <div
+              key={course.id}
+              className="bg-white p-4 rounded shadow-md hover:shadow-lg transition"
+            >
+              <h3 className="font-bold text-gray-700">{course.title}</h3>
+              <Link
+                href={`/courses/${course.id}`}
+                className="text-blue-600 text-sm font-semibold hover:underline mt-2 inline-block"
+              >
+                View Course
+              </Link>
+            </div>
+          ))}
+        </div>
+      </div> */}
+      {/* <CoursesSection /> */}
       </section>
     );
   }

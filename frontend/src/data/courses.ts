@@ -59,6 +59,15 @@ export const courses = [
   },
   {
     id: 4,
+    title: "Advance Back-End Developer",
+    description: "Focus on server-side programming with Node.js, Express, Django, and Flask to build robust back-end applications.",
+    instructor: "Emily Davis",
+    duration: "10 weeks",
+    students: 70,
+    image: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    id: 5,
     title: "Full-Stack Developer",
     description: "Learn end-to-end application development with MERN and MEAN stacks, integrating front-end and back-end technologies.",
     instructor: "Michael Brown",
@@ -67,16 +76,16 @@ export const courses = [
     image: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=640"
   },
   {
-    id: 5,
-    title: "Mobile-Friendly Developer",
-    description: "Develop mobile-first and hybrid web applications with React Native and Ionic frameworks, ensuring cross-platform compatibility.",
-    instructor: "Sophia Wilson",
-    duration: "8 weeks",
-    students: 60,
-    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  },
-  {
     id: 6,
+    title: "Advanced Full-Stack Developer",
+    description: "Explore cutting-edge tools like the T3 Stack and Astro to optimize performance and build modern web applications.",
+    instructor: "Olivia Martinez",
+    duration: "10 weeks",
+    students: 40,
+    image: "https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?q=80&w=1748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+   },
+  {
+    id: 7,
     title: "Cloud-Optimized Developer",
     description: "Learn to build scalable and serverless applications using Next.js, Firebase, and AWS Lambda for cloud deployment.",
     instructor: "David Johnson",
@@ -85,16 +94,16 @@ export const courses = [
     image: "https://images.unsplash.com/photo-1542744094-3a31f272c490?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
-    id: 7,
-    title: "Advanced Full-Stack Developer",
-    description: "Explore cutting-edge tools like the T3 Stack and Astro to optimize performance and build modern web applications.",
-    instructor: "Olivia Martinez",
-    duration: "10 weeks",
-    students: 40,
-    image: "https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?q=80&w=1748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    id: 8,
+    title: "Mobile-Friendly Developer",
+    description: "Develop mobile-first and hybrid web applications with React Native and Ionic frameworks, ensuring cross-platform compatibility.",
+    instructor: "Sophia Wilson",
+    duration: "8 weeks",
+    students: 60,
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   },
   {
-    id: 8,
+    id: 9,
     title: "Enterprise Developer",
     description: "Create enterprise-grade applications with Spring Boot, React, and ASP.NET Core, focusing on scalability and performance.",
     instructor: "James Anderson",
