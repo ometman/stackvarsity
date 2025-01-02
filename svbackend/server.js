@@ -6,6 +6,6 @@ app.get('/', (req, res) => {
     res.send('Hello, Application calling get')
 });
 
-app.listen(port, (req, res) => {
+app.listen(port, () => {
     console.log(`Welcome to Web Development on Stackvarsity on ${port}`)
 })
