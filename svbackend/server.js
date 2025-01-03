@@ -1,11 +1,17 @@
-const app = require('./index');
+const app = require('./app');
 
-const port = 5000;
-
-app.get('/', (req, res) => {
-    res.send('Hello, Application calling get')
-});
-
-app.listen(port, () => {
-    console.log(`Welcome to Web Development on Stackvarsity on ${port}`)
+const PORT = process.env.port || 5000;
+app.listen(PORT, () => {
+    console.log(`Welcome to Web Development on Stackvarsity on ${PORT}`)
 })
+
+// Testing REST API
+app.get('/', (req, res) => {
+    res.json({
+      message: 'Welcome to STACKVARSITY: Your Web Development Learning Platform API',
+      routes: {
+        users: '/api/users',
+        courses: '/api/courses',
+      },
+    });
+  });
