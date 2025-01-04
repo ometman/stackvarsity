@@ -1,40 +1,45 @@
+// export default DashboardView;
 import React from "react";
-import DashboardLayout from "./DashboardLayout";
+// import DashboardLayout from "./layout";
 import { AdminDashboard } from "./stackoffice/AdminDashboard";
-import { StudentDashboard } from "./student/StudentDashboard";
+// import { StudentDashboard } from "./student/layout";
+// import StudentLayout from "./student/layout";
 import { useAuth } from "../context/AuthContext";
 
 const DashboardView = () => {
-
   const { isAuthenticated, isUser } = useAuth();
 
-  // const PageTitle = isUser?.role === "student" ? "Student Dashboard" : "Admin Dashboard";
-
   if (!isAuthenticated) {
-    return <p> You are not authenticated </p>
+    return (
+      <div className="text-center py-10">
+        <p className="text-red-500 text-lg">You are not authenticated. Please log in.</p>
+      </div>
+    );
   }
+
+  const role = isUser?.role;
+
+  if (role === "admin") {
+    return (        
+    <AdminDashboard />
+    );
+  }
+
+  if (role === "student") {
+    return (
+          <div className="flex items-center justify-between mb-6">
+            <h1 className="text-2xl font-bold text-gray-700">Welcome Back, {isUser?.email}!</h1>
+            <p className="text-gray-500">"Empower your learning journey with us."</p>
+          </div>
+    );
+  }
+
   return (
-    <DashboardLayout>
-        {/* <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-700">Welcome Back, {isUser?.email}!</h1>
-          <p className="text-gray-500">"Empower your learning journey with us."</p>
-        </div> */}
-        <p className="text-lg text-gray-400 mb-4">
-          {isUser?.role === "admin" 
-            && "Admin Dashboard - Manage Tutors, Courses, Students, and More"
-          }
-          {isUser?.role === "student" 
-            && "Student Dashboard - Access Your Courses and Progress"
-          }
+      <div className="text-center py-10">
+        <p className="text-red-500 text-lg">
+          Access Denied: You do not have permission to access this page.
         </p>
-        {/* Conditional Rendering Based on User Role */}
-        {isUser?.role === "admin" && <AdminDashboard />}
-        {isUser?.role === "student" && <StudentDashboard />}
-         {/* Fallback if user role is null */}
-         {isUser?.role === null && (
-          <p className="text-red-500 text-center mt-8">Access Denied</p>
-          )}
-    </DashboardLayout>
+      </div>
   );
 };
 

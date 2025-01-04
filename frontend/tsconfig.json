@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "../backend/hashcode.js", "src/next/Head", "src/components/next/Head"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "../backend/hashcode.js", "src/next/Head", "src/components/next/Head", "src/app/dashboard/student/studenthomepage/StudendHomepage.tsx"],
   "exclude": ["node_modules"]
 }

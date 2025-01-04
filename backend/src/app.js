@@ -7,6 +7,10 @@ dotenv.config();
 
 const userRoutes = require('./routes/userRoutes');
 const courseRoutes = require('./routes/courseRoutes');
+const studentRoutes = require('./routes/studentRoutes');
+const gradeRoutes = require('./routes/gradeRoutes');
+const progressRoutes = require('./routes/progressRoutes');
+
 const { notFoundHandler, errorHandler } = require('./middleware/errorHandler');
   
 const app = express();
@@ -18,6 +22,9 @@ app.use(bodyParser.json());
 // API Base Routes
 app.use('/api/users', userRoutes);
 app.use('/api/courses', courseRoutes);
+app.use('/api/students', studentRoutes);
+app.use('/api/grades', gradeRoutes);
+app.use('/api/progress', progressRoutes);
 
 // Error Handling
 app.use(notFoundHandler); // 404 handler

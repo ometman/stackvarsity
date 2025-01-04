@@ -1,34 +1,3 @@
-
-// export const courses = [
-//   {
-//     id: 1,
-//     title: 'MERN Stack',
-//     description: 'Learn the fundamentals of React including components, props, and state.',
-//     instructor: 'Sarah Johnson',
-//     duration: '6 weeks',
-//     students: 234,
-//     image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=640'
-//   },
-//   {
-//     id: 2,
-//     title: 'Node.js Fundamentals',
-//     description: 'Learn and master backend development with Node.js and Express.',
-//     instructor: 'Michael Chen',
-//     duration: '8 weeks',
-//     students: 189,
-//     image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?auto=format&fit=crop&q=80&w=640'
-//   },
-//   {
-//     id: 3,
-//     title: 'MongoDB Essentials',
-//     description: 'Learn to work with MongoDB database and perform CRUD operations.',
-//     instructor: 'David Wilson',
-//     duration: '4 weeks',
-//     students: 156,
-//     image: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=640'
-//   }
-// ];
-
 export const courses = [
   {
     id: 1,
@@ -112,3 +81,4 @@ export const courses = [
     image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
   }
 ];
+

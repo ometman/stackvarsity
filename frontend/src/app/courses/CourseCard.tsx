@@ -1,21 +1,35 @@
 import { BookOpen, Clock, Users } from 'lucide-react';
-import { JSX } from 'react';
 
-type Course = {
-  map(arg0: (course: any, index: any) => JSX.Element): import("react").ReactNode;
-  id: number;
-  title: string;
-  category: string;
-  description: string;
-  duration: string;
-};
+// type Course = {
+//   map(arg0: (course: any, index: any) => JSX.Element): import("react").ReactNode;
+//   id: number;
+//   title: string;
+//   category: string;
+//   description: string;
+//   duration: string;
+//   instructor: string;
+//   image: Text;
+// };
 
-const CourseCard = ({ course }: { course: Course }) => {
+// type Course = {
+//   id: string;
+//   title: string;
+//   category: string;
+//   description: string;
+//   instructor: string;
+//   duration: string;
+//   students: number;
+//   image: string;
+// };
+
+export default function CourseCard({ course }: { course: any} ) {
   return (
     <div className="bg-white shadow-lg rounded-lg p-4">
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-       {course.map((course: any, index) => ( 
-        <div key={index} className="bg-white rounded-lg shadow-md p-4 overflow-hidden">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+       {course.map((course: any, index: number) => ( 
+        <div 
+        key={index} 
+        className="rounded-lg shadow-md p-4 overflow-hidden border bg-gray-50 shadow hover:shadow-lg transition">
           <img
             className="h-48 w-full object-cover"
             src={course.image}
@@ -55,5 +69,3 @@ const CourseCard = ({ course }: { course: Course }) => {
     </div> 
   );
 };
-
-export default CourseCard;
