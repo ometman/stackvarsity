@@ -18,3 +18,12 @@ pool.connect()
 
 module.exports = pool;
 
+const { Sequelize } = require('sequelize');
+
+// Initialize Sequelize instance with PostgreSQL
+const sequelize = new Sequelize(pool.database, pool.user, pool.password, {
+    host: 'localhost',
+    dialect: 'postgres'
+});
+
+module.exports = sequelize;
