@@ -1,14 +1,14 @@
-const sequelize = require('./db');
-const Admin = require('./models/admin');
-const AdminRole = require('./models/adminRole');
-const User = require('./models/user');
-const Subscription = require('./models/subscription');
-const Student = require('./models/student');
-const Course = require('./models/course');
-const Module = require('./models/module');
-const Lesson = require('./models/lesson');
-const Project = require('./models/project');
-const Grade = require('./models/grade');
+const sequelize = require('../utilities/db');
+const Admin = require('./adminModel');
+const AdminRole = require('./adminRoleModel');
+const User = require('./userModel');
+const Subscription = require('./subscriptionModel');
+const Student = require('./studentModel');
+const Course = require('./courseModel');
+const Module = require('./moduleModel');
+const Lesson = require('./lessonModel');
+const Project = require('./projectModel');
+const Grade = require('./gradeModel');
 
 (async () => {
     try {

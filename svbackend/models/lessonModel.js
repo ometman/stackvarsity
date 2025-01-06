@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
-const Module = require('./module');
+const Module = require('./moduleModel');
 
 const Lesson = sequelize.define('Lesson', {
     title: DataTypes.STRING,
