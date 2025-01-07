@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "ometman",
+    "database": "stack-db-development",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "ometman",
+    "database": "stack-db-test",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "ometman",
+    "database": "stack-db-production",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}
