@@ -1,4 +1,4 @@
-const sequelize = require('../utilities/db');
+const sequelize = require('../utilities/dbPool');
 const Admin = require('./adminModel');
 const AdminRole = require('./adminRoleModel');
 const User = require('./userModel');
