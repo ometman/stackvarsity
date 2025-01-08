@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../db');
-const AdminRole = require('./adminRole');
+const AdminRole = require('./adminRoleModel');
 
 const Admin = sequelize.define('Admin', {
     first_name: DataTypes.STRING,
