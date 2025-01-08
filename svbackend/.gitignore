@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 svbackend/node_modules**
+/config/**
 
 /.pnp
 .pnp.*
