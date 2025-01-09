@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../db');
+const sequelize = require('../utilities/dbSequel');
 const Module = require('./moduleModel');
 
 const Lesson = sequelize.define('Lesson', {

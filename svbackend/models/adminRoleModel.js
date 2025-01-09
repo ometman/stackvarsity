@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../db');
+const sequelize = require('../utilities/dbSequel');
 
 const AdminRole = sequelize.define('AdminRole', {
     role_name: {
