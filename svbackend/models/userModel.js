@@ -1,10 +1,11 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utilities/dbSequel');
+const cuid = require('cuid')
 
 const User = sequelize.define('User', {
     id: {
         type: DataTypes.INTEGER,
-        autoIncrement: true,
+        defaultValue: cuid,
         primaryKey: true
     },
     username: {
