@@ -1,11 +1,11 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utilities/dbSequel');
-const cuid = require('cuid')
+const UUIDV4 = require('uuid')
 
 const User = sequelize.define('User', {
     id: {
-        type: DataTypes.INTEGER,
-        defaultValue: cuid,
+        type: DataTypes.UUID,
+        defaultValue: UUIDV4,
         primaryKey: true
     },
     username: {
@@ -35,6 +35,11 @@ const User = sequelize.define('User', {
     password_hash: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    role: {
+        type: DataTypes.ENUM('student', 'admin'), // Enum for fixed roles
+        allowNull: false,
+        defaultValue: 'student'
     }
 }, { 
     timestamps: true 
