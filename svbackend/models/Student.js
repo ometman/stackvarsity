@@ -81,9 +81,6 @@ Student.belongsTo(User, {
   as: 'user' 
 }); 
 
-User.hasOne(Student, { 
-  foreignKey: 'user_id',
-  as: 'student'
-});
+
 
 module.exports = Student;

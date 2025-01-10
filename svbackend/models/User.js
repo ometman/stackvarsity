@@ -66,4 +66,14 @@ const User = sequelize.define('User', {
     ] 
 });
 
+User.hasOne(Admin, { 
+    foreignKey: 'user_id',
+    as: 'admin' // 'user_id' is the foreign key in the Admin table
+  }); 
+
+User.hasOne(Student, { 
+    foreignKey: 'user_id',
+    as: 'student'
+});
+
 module.exports = User;
