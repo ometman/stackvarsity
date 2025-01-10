@@ -66,6 +66,7 @@ const Student = sequelize.define('Student', {
     }
 }, {
     timestamps: true,
+    tableName: 'student',
     paranoid: true, // Optional: Soft deletes, if needed
     hooks: {
         beforeCreate: (student) => {
@@ -80,9 +81,6 @@ Student.belongsTo(User, {
   as: 'user' 
 }); 
 
-User.hasOne(Student, { 
-  foreignKey: 'user_id',
-  as: 'student'
-});
+
 
 module.exports = Student;
