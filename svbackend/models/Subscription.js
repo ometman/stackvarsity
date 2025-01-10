@@ -1,6 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utilities/dbSequel');
-const User = require('./userModel');
+const User = require('./User');
 
 const Subscription = sequelize.define('Subscription', {
     plan_name: DataTypes.STRING,
