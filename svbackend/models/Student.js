@@ -66,6 +66,7 @@ const Student = sequelize.define('Student', {
     }
 }, {
     timestamps: true,
+    tableName: 'student',
     paranoid: true, // Optional: Soft deletes, if needed
     hooks: {
         beforeCreate: (student) => {
