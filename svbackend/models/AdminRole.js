@@ -18,7 +18,7 @@ const AdminRole = sequelize.define('AdminRole', {
         }
     },
     permissions: {
-        type: DataTypes.JSON,  // Storing permissions as an array of strings
+        type: DataTypes.JSONB,  // Storing permissions as an array of strings
         allowNull: false,
         defaultValue: [],  // Default to an empty array if no permissions provided
         validate: {
