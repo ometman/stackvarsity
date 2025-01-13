@@ -1,15 +1,45 @@
+// models/Grade.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utilities/dbSequel');
-const Student = require('./student');
-const Course = require('./course');
+const Student = require('./Student');
+const Course = require('./Course');
 
 const Grade = sequelize.define('Grade', {
-    grade: DataTypes.STRING,
-    comments: DataTypes.TEXT
-}, { timestamps: true });
+    id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+        allowNull: false
+    },
+    grade: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
+    comments: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    }
+}, {
+    timestamps: true,
+    paranoid: true,
+    tableName: 'grades'
+});
 
-// Relationships
-Grade.belongsTo(Student, { foreignKey: 'student_id' });
-Grade.belongsTo(Course, { foreignKey: 'course_id' });
+// Relationships with constraints
+Grade.belongsTo(Student, { 
+    foreignKey: 'student_id', 
+    as: 'student',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
+Grade.belongsTo(Course, { 
+    foreignKey: 'course_id', 
+    as: 'course',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
 
 module.exports = Grade;

@@ -106,3 +106,7 @@ Name: Omet Omeni
 Email: revomet@gmail.com
 Website: https://ometman.com
 
+d	role_name	permissions	description
+1	superadmin	{"manage_users": true, "manage_courses": true, "manage_content": true, "view_reports": true, "all_permissions": true}	Full system access
+2	content_manager	{"manage_courses": true, "manage_content": true}	Manages course content only
+3	support	{"manage_users": true, "view_reports": true}	User management and reports
