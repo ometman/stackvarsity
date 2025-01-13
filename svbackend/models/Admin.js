@@ -66,4 +66,9 @@ Admin.belongsTo(AdminRole, {
     as: 'role' 
 });
 
+Admin.belongsTo(User, { 
+    foreignKey: 'user_id', 
+    as: 'user'  // Alias for the relationship
+});
+
 module.exports = Admin;

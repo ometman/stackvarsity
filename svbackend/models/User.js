@@ -1,7 +1,9 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utilities/dbSequel');
- const { v4: uuidv4 } = require('uuid');
-const Subscription = require('./Subscription');
+const { v4: uuidv4 } = require('uuid');
+const Admin = require('./Admin');        // Import Admin model
+const Student = require('./Student');    // Import Student model
+const AdminRole = require('./AdminRole'); // Import AdminRole model
 
 const User = sequelize.define('User', {
     id: {
@@ -14,7 +16,7 @@ const User = sequelize.define('User', {
         allowNull: false,
         unique: true,
         validate: {
-            len: [6, 20],  // Username length between 4 and 20 characters
+            len: [6, 20],  // Username length between 6 and 20 characters
             isAlphanumeric: true // Only letters and numbers allowed  
         }
     },
@@ -66,14 +68,34 @@ const User = sequelize.define('User', {
     ] 
 });
 
+// Associations with constraints
 User.hasOne(Admin, { 
     foreignKey: 'user_id',
-    as: 'admin' // 'user_id' is the foreign key in the Admin table
-  }); 
-
+    as: 'admin',
+    onDelete: 'CASCADE',  // Delete related admin when the user is deleted
+    onUpdate: 'CASCADE'   // Update foreign key when user id is updated
+});
+  
 User.hasOne(Student, { 
     foreignKey: 'user_id',
-    as: 'student'
+    as: 'student',
+    onDelete: 'CASCADE',  // Delete related student when the user is deleted
+    onUpdate: 'CASCADE'   // Update foreign key when user id is updated
+});
+  
+// Relationship with AdminRole
+User.belongsTo(AdminRole, { 
+    foreignKey: 'role_id', 
+    as: 'role',
+    onDelete: 'SET NULL',  // Set the role to null if the role is deleted
+    onUpdate: 'CASCADE'    // Update foreign key when role id is updated
+});
+  
+AdminRole.hasMany(User, { 
+    foreignKey: 'role_id', 
+    as: 'users',
+    onDelete: 'SET NULL',  // Set the role to null if the role is deleted
+    onUpdate: 'CASCADE'    // Update foreign key when role id is updated
 });
 
 module.exports = User;
