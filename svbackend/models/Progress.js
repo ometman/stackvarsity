@@ -5,7 +5,7 @@ const Course = require('./Course');
 const Module = require('./Module');
 const Lesson = require('./Lesson');
 
-const StudentProgress = sequelize.define('StudentProgress', {
+const Progress = sequelize.define('Progress', {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
@@ -22,9 +22,9 @@ const StudentProgress = sequelize.define('StudentProgress', {
     }
 }, { timestamps: true, paranoid: true });
 
-StudentProgress.belongsTo(Student, { foreignKey: 'student_id', onDelete: 'CASCADE' });
-StudentProgress.belongsTo(Course, { foreignKey: 'course_id', onDelete: 'CASCADE' });
-StudentProgress.belongsTo(Module, { foreignKey: 'module_id', onDelete: 'CASCADE' });
-StudentProgress.belongsTo(Lesson, { foreignKey: 'lesson_id', onDelete: 'CASCADE' });
+Progress.belongsTo(Student, { foreignKey: 'student_id', onDelete: 'CASCADE' });
+Progress.belongsTo(Course, { foreignKey: 'course_id', onDelete: 'CASCADE' });
+Progress.belongsTo(Module, { foreignKey: 'module_id', onDelete: 'CASCADE' });
+Progress.belongsTo(Lesson, { foreignKey: 'lesson_id', onDelete: 'CASCADE' });
 
-module.exports = StudentProgress;
+module.exports = Progress;

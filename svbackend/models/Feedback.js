@@ -14,7 +14,10 @@ const Feedback = sequelize.define('Feedback', {
         validate: { min: 1, max: 5 }
     },
     comment: DataTypes.TEXT
-}, { timestamps: true, paranoid: true });
+}, { timestamps: true, 
+    tableName: 'feedbacks',
+    paranoid: true 
+});
 
 Feedback.belongsTo(Student, { foreignKey: 'student_id', onDelete: 'CASCADE' });
 Feedback.belongsTo(Course, { foreignKey: 'course_id', onDelete: 'CASCADE' });

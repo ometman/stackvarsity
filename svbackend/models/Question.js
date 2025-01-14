@@ -16,7 +16,10 @@ const Question = sequelize.define('Question', {
         type: DataTypes.ENUM('multiple_choice', 'true_false', 'short_answer'),
         allowNull: false
     }
-}, { timestamps: true, paranoid: true });
+}, { timestamps: true, 
+    tableName: 'questions',
+    paranoid: true 
+});
 
 Question.belongsTo(Quiz, { foreignKey: 'quiz_id', onDelete: 'CASCADE' });
 

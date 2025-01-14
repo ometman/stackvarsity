@@ -17,7 +17,10 @@ const Certificate = sequelize.define('Certificate', {
         type: DataTypes.STRING,
         validate: { isUrl: true }
     }
-}, { timestamps: true, paranoid: true });
+}, { timestamps: true, 
+    tableName: 'certificates',
+    paranoid: true 
+});
 
 Certificate.belongsTo(Student, { foreignKey: 'student_id', onDelete: 'CASCADE' });
 Certificate.belongsTo(Course, { foreignKey: 'course_id', onDelete: 'CASCADE' });

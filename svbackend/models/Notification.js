@@ -15,6 +15,9 @@ const Notification = sequelize.define('Notification', {
         type: DataTypes.ENUM('students', 'admins', 'all'),
         allowNull: false
     }
-}, { timestamps: true, paranoid: true });
+}, { timestamps: true, 
+    tableName: 'notifications',
+    paranoid: true 
+});
 
 module.exports = Notification;

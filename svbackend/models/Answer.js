@@ -16,7 +16,10 @@ const Answer = sequelize.define('Answer', {
         type: DataTypes.BOOLEAN,
         defaultValue: false
     }
-}, { timestamps: true, paranoid: true });
+}, { timestamps: true, 
+    tableName: 'answers',
+    paranoid: true 
+});
 
 Answer.belongsTo(Question, { foreignKey: 'question_id', onDelete: 'CASCADE' });
 

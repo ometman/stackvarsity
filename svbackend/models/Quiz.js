@@ -17,7 +17,10 @@ const Quiz = sequelize.define('Quiz', {
         type: DataTypes.INTEGER,
         allowNull: false
     }
-}, { timestamps: true, paranoid: true });
+}, { timestamps: true, 
+    tableName: 'quizzes',
+    paranoid: true 
+});
 
 Quiz.belongsTo(Course, { foreignKey: 'course_id', onDelete: 'CASCADE' });
 
