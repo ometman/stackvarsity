@@ -82,7 +82,9 @@ const Student = sequelize.define('Student', {
 // Define the relationship between Student and User
 Student.belongsTo(User, { 
   foreignKey: 'user_id', 
-  as: 'user' 
+  as: 'user',
+  onDelete: 'CASCADE',
+  onUpdate: 'CASCADE' 
 }); 
 
 module.exports = Student;

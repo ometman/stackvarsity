@@ -35,8 +35,19 @@ const Lesson = sequelize.define('Lesson', {
 });
 
 // Relationships
-Lesson.belongsTo(Module, { foreignKey: 'module_id', as: 'module' });
-Module.hasMany(Lesson, { foreignKey: 'module_id', as: 'lessons' });
+Module.hasMany(Lesson, {
+    foreignKey: 'module_id',
+    as: 'lessons',
+    onDelete: 'CASCADE', // Automatically delete lessons if the module is deleted
+    onUpdate: 'CASCADE'
+});
+
+Lesson.belongsTo(Module, {
+    foreignKey: 'module_id',
+    as: 'module',
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+});
 
 module.exports = Lesson;
 

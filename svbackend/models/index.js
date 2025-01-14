@@ -1,20 +1,43 @@
-const sequelize = require('../utilities/dbPool');
-const Admin = require('./adminModel');
-const AdminRole = require('./adminRoleModel');
-const User = require('./userModel');
-const Subscription = require('./subscriptionModel');
-const Student = require('./studentModel');
-const Course = require('./courseModel');
-const Module = require('./moduleModel');
-const Lesson = require('./lessonModel');
-const Project = require('./projectModel');
-const Grade = require('./gradeModel');
+'use strict';
 
-(async () => {
-    try {
-        await sequelize.sync({ force: true });
-        console.log("Database & tables created!");
-    } catch (error) {
-        console.error("Error creating tables:", error);
-    }
-})();
+const fs = require('fs');
+const path = require('path');
+const Sequelize = require('sequelize');
+const process = require('process');
+const basename = path.basename(__filename);
+const env = process.env.NODE_ENV || 'development';
+const config = require(__dirname + '/../config/config')[env];
+const db = {};
+
+let sequelize;
+if (config.use_env_variable) {
+  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+} else {
+  sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
+
+fs
+  .readdirSync(__dirname)
+  .filter(file => {
+    return (
+      file.indexOf('.') !== 0 &&      // Ignore hidden files
+      file !== basename &&            // Ignore this index.js file itself
+      file.slice(-3) === '.js' &&     // Only include .js files
+      file.indexOf('.test.js') === -1 // Ignore test files
+    );
+  })
+  .forEach(file => {
+    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    db[model.name] = model;
+  });
+
+Object.keys(db).forEach(modelName => {
+  if (db[modelName].associate) {
+    db[modelName].associate(db);
+  }
+});
+
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+module.exports = db;
