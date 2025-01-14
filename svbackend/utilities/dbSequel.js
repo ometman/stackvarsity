@@ -1,11 +1,14 @@
 const { Sequelize } = require('sequelize');
 const hstore = require('pg-hstore')();
-const config = require('../config/config.json').development;
+const config = require('../config/config');
+
+const env = process.env.NODE_ENV || 'development';
+const dbConfig = config[env]
 
 // Initialize Sequelize instance with PostgreSQL
-const sequelize = new Sequelize(config.database, config.username, config.password, {
-    host: config.host,
-    dialect: config.dialect,
+const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
+    host: dbConfig.host,
+    dialect: dbConfig.dialect,
     logging: false,
     pool: {
       max: 5, // max no. of connections in pool
