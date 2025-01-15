@@ -1,12 +1,13 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../utilities/dbSequel');
+const { v4: uuidv4 } = require('uuid');
 const AdminRole = require('./AdminRole');
 const User = require('./User');
 
 const Admin = sequelize.define('Admin', {
     id: {
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4, // Generate unique UUID for each admin
+        defaultValue: uuidv4, // Generate unique UUID for each admin
         primaryKey: true,
         allowNull: false
     },
