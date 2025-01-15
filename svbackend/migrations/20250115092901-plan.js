@@ -1,22 +1,60 @@
 'use strict';
 
 /** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add altering commands here.
-     *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
+  up: async (queryInterface, Sequelize) => {
+    await queryInterface.createTable('plans', {
+      id: {
+        type: Sequelize.UUID,
+        defaultValue: Sequelize.UUIDV4,
+        primaryKey: true
+      },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: true,
+        validate: {
+          notEmpty: true,
+          len: [3, 50]
+        }
+      },
+      description: {
+        type: Sequelize.TEXT,
+        allowNull: true
+      },
+      price: {
+        type: Sequelize.DECIMAL(10, 2),
+        allowNull: false,
+        validate: {
+          min: 0
+        }
+      },
+      duration: {
+        type: Sequelize.ENUM('Monthly', 'Quarterly', 'Yearly', 'Lifetime'),
+        allowNull: false
+      },
+      features: {
+        type: Sequelize.JSONB,
+        allowNull: true,
+        defaultValue: []
+      },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false
+      },
+      deletedAt: {
+        type: Sequelize.DATE,
+        allowNull: true
+      }
+    });
   },
 
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('plans');
   }
 };
