@@ -7,7 +7,7 @@ module.exports = {
         await queryInterface.createTable('admins', {
             id: {
                 type: Sequelize.UUID,
-                defaultValue: Sequelize.literal('uuid_generate_v4()'),
+                defaultValue: Sequelize.UUIDV4,
                 primaryKey: true,
                 allowNull: false
             },
@@ -53,7 +53,7 @@ module.exports = {
             role_id: {
                 type: Sequelize.UUID,
                 references: {
-                    model: 'AdminRoles',
+                    model: 'admin_roles',
                     key: 'id'
                 },
                 onUpdate: 'CASCADE',
@@ -62,7 +62,7 @@ module.exports = {
             user_id: {
                 type: Sequelize.UUID,
                 references: {
-                    model: 'Users',
+                    model: 'users',
                     key: 'id'
                 },
                 onUpdate: 'CASCADE',
