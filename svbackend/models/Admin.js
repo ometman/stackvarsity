@@ -27,36 +27,13 @@ const Admin = sequelize.define('Admin', {
             len: [2, 40]
         }
     },
-    email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        unique: true, // Ensure no duplicate emails
-        validate: {
-            isEmail: true, // Validates proper email format
-            notEmpty: true
-        }
-    },
-    password_hash: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: true
-        }
-    },
-    password_salt: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: true
-        }
-    }
 }, {
     timestamps: true,     // Adds createdAt and updatedAt fields
     paranoid: true,       // Enables soft deletion with deletedAt
     tableName: 'admins',  // Explicit plural table name for consistency
     hooks: {
         beforeCreate: (admin) => {
-            admin.email = admin.email.toLowerCase(); // Normalize email case
+           // admin.email = admin.email.toLowerCase(); // Normalize email case
         }
     }
 });
