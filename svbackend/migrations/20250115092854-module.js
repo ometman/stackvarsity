@@ -34,21 +34,21 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
-          model: 'courses',  // Assumes a 'courses' table exists
+          model: 'courses',  // From courses table
           key: 'id'
         },
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false
       },
-      deletedAt: {
+      deleted_at: {
         type: Sequelize.DATE,
         allowNull: true
       }
