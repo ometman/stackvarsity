@@ -1,19 +1,22 @@
 'use strict';
 
+const { v4: uuidv4 } = require('uuid');
+
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Enrollments', [
+    await queryInterface.bulkInsert('enrollments', [
       {
-        id: 'enrollment_uuid1',
+        id: uuidv4(),
         enrollment_date: '2024-01-15',
         status: 'active',
-        student_id: 'student_uuid1',
-        course_id: 'course_uuid1',
+        student_id: students.find(student => student.id === 'admin').id,
+        course_id: users.find(user => user.role === 'admin').id,,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        id: 'enrollment_uuid2',
+        id: uuidv4(),
         enrollment_date: '2024-02-10',
         status: 'completed',
         student_id: 'student_uuid2',
@@ -22,7 +25,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        id: 'enrollment_uuid3',
+        id: uuidv4(),
         enrollment_date: '2024-03-05',
         status: 'dropped',
         student_id: 'student_uuid3',
@@ -31,7 +34,7 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        id: 'enrollment_uuid4', 
+        id: uuidv4(), 
         enrollment_date: '2024-04-20', 
         status: 'active', 
         student_id: 'student_uuid4', 
@@ -43,6 +46,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Enrollments', null, {});
+    await queryInterface.bulkDelete('enrollments', null, {});
   },
 };

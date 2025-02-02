@@ -1,10 +1,12 @@
 'use strict';
 
+const { v4: uuidv4 } = require('uuid');
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Answers', [
       {
-        id: 'answer_uuid1',
+        id: uuidv4(),
         answer_text: 'HyperText Markup Language',
         is_correct: true,
         question_id: 'question_uuid1',
@@ -13,7 +15,7 @@ module.exports = {
         deletedAt: null,
       },
       {
-        id: 'answer_uuid2',
+        id: uuidv4(),
         answer_text: 'Cascading Style Sheets',
         is_correct: false,
         question_id: 'question_uuid1',
@@ -22,7 +24,7 @@ module.exports = {
         deletedAt: null,
       },
       {
-        id: 'answer_uuid3',
+        id: uuidv4(),
         answer_text: 'Helix Transfer Language',
         is_correct: false,
         question_id: 'question_uuid1',
@@ -31,7 +33,7 @@ module.exports = {
         deletedAt: null,
       },
       {
-        id: 'answer_uuid4',
+        id: uuidv4(),
         answer_text: 'A way to structure content on the web',
         is_correct: true,
         question_id: 'question_uuid2',
@@ -40,7 +42,7 @@ module.exports = {
         deletedAt: null,
       },
       {
-        id: 'answer_uuid5',
+        id: uuidv4(),
         answer_text: 'A programming language',
         is_correct: false,
         question_id: 'question_uuid2',
@@ -49,7 +51,7 @@ module.exports = {
         deletedAt: null,
       },
       {
-        id: 'answer_uuid6',
+        id: uuidv4(),
         answer_text: 'JavaScript variable declaration types',
         is_correct: true,
         question_id: 'question_uuid3',
@@ -58,7 +60,7 @@ module.exports = {
         deletedAt: null,
       },
       {
-        id: 'answer_uuid7',
+        id: uuidv4(),
         answer_text: 'CSS selectors',
         is_correct: false,
         question_id: 'question_uuid3',
@@ -67,7 +69,7 @@ module.exports = {
         deletedAt: null,
       },
       {
-        id: 'answer_uuid8',
+        id: uuidv4(),
         answer_text: 'A reusable piece of UI in React',
         is_correct: true,
         question_id: 'question_uuid4',
@@ -76,7 +78,7 @@ module.exports = {
         deletedAt: null,
       },
       {
-        id: 'answer_uuid9',
+        id: uuidv4(),
         answer_text: 'A server configuration',
         is_correct: false,
         question_id: 'question_uuid4',
@@ -85,7 +87,7 @@ module.exports = {
         deletedAt: null,
       },
       {
-        id: 'answer_uuid10',
+        id: uuidv4(),
         answer_text: 'A relational database language',
         is_correct: false,
         question_id: 'question_uuid5',

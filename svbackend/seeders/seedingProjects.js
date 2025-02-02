@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Projects', [
+    await queryInterface.bulkInsert('projects', [
       {
         id: 'project_uuid1',
         title: 'Web Development Basics Project',
@@ -47,7 +47,10 @@ module.exports = {
         title: 'Full-Stack Capstone Project',
         description: 'A comprehensive project integrating front-end and back-end skills to build a social media platform.',
         due_date: '2024-04-01',
-        rubric: JSON.stringify({ criteria: ['Full-Stack Integration', 'Performance', 'Security'], max_score: 100 }),
+        rubric: JSON.stringify({ criteria: [
+          'Full-Stack Integration', 'Performance', 'Security',
+          'Design', 'Functionality', 'Responsiveness'
+      ], max_score: 100 }),
         is_completed: false,
         completed_at: null,
         module_id: 'module_uuid4',
@@ -59,6 +62,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('Projects', null, {});
+    await queryInterface.bulkDelete('projects', null, {});
   }
 };

@@ -59,7 +59,7 @@ module.exports = {
                 type: Sequelize.UUID,
                 allowNull: true,
                 references: {
-                    model: 'users', // Ensure this matches the instructor table (users or instructors)
+                    model: 'admins', // Assuming instructors are in the "admins" table
                     key: 'id'
                 },
                 onDelete: 'SET NULL',
@@ -76,7 +76,8 @@ module.exports = {
                 defaultValue: Sequelize.NOW
             },
             deleted_at: {
-                type: Sequelize.DATE
+                type: Sequelize.DATE,
+                allowNull: true
             }
         });
     },
