@@ -45,8 +45,8 @@ const Project = sequelize.define('Project', {
 
 // Relationships
 Project.belongsTo(Module, { 
-  foreignKey: 'module_id', 
-  as: 'module',
+  foreignKey: 'course_id', 
+  as: 'courses',
   onDelete: 'CASCADE',
   onUpdate: 'CASCADE'
 });
