@@ -9,9 +9,9 @@ module.exports = {
         comment: 'Amazing course! Learned a lot and the instructor was very engaging.',
         student_id: 'student_uuid1',
         course_id: 'course_uuid1',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: null,
       },
       {
         id: 'feedback_uuid2',
@@ -19,9 +19,9 @@ module.exports = {
         comment: 'Great content, but could use more examples.',
         student_id: 'student_uuid2',
         course_id: 'course_uuid2',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: null,
       },
       {
         id: 'feedback_uuid3',
@@ -29,9 +29,9 @@ module.exports = {
         comment: 'The course was okay but lacked depth in some topics.',
         student_id: 'student_uuid3',
         course_id: 'course_uuid3',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: null,
       },
       {
         id: 'feedback_uuid4',
@@ -39,9 +39,9 @@ module.exports = {
         comment: 'Perfect course! Would highly recommend.',
         student_id: 'student_uuid4',
         course_id: 'course_uuid4',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: null,
       },
       {
         id: 'feedback_uuid5',
@@ -49,9 +49,9 @@ module.exports = {
         comment: 'Very informative and well structured.',
         student_id: 'student_uuid5',
         course_id: 'course_uuid5',
-        createdAt: new Date(),
-        updatedAt: new Date(),
-        deletedAt: null
+        created_at: new Date(),
+        updated_at: new Date(),
+        deleted_at: null,
       }
     ]);
   },
