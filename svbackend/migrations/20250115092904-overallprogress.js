@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('feedbacks', {
+    await queryInterface.createTable('overall_progress', {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -13,34 +13,24 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false,
         references: {
-          model: 'students', // Must match actual table name
+          model: 'students', // from students table
           key: 'id'
         },
         onDelete: 'CASCADE'
       },
-      course_id: {
-        type: Sequelize.UUID,
+      status: {
+        type: Sequelize.ENUM('not_started', 'in_progress', 'completed'),
         allowNull: false,
-        references: {
-          model: 'courses', // Must match actual table name
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
+        defaultValue: 'not_started'
       },
-      rating: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
-        validate: { min: 1, max: 5 }
+      progress_percent: {
+        type: Sequelize.DECIMAL(5, 2),
+        allowNull: false,
+        defaultValue: 0.00
       },
-      comment: {
-        type: Sequelize.TEXT,
+      completed_at: {
+        type: Sequelize.DATE,
         allowNull: true
-      },
-      shares_count: {
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
-        allowNull: false,
-        validate: { min: 0 }
       },
       created_at: {
         type: Sequelize.DATE,
@@ -60,6 +50,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('feedbacks');
+    await queryInterface.dropTable('overall_progress');
   }
 };

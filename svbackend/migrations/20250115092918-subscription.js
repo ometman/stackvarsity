@@ -58,22 +58,22 @@ module.exports = {
         }
       },
       renewal_frequency: {
-        type: Sequelize.ENUM('Monthly', 'Yearly'),
+        type: Sequelize.ENUM('Monthly', 'Quarterly', 'Yearly', 'No Renewal'),
         allowNull: true
       },
       auto_renew: {
         type: Sequelize.BOOLEAN,
         defaultValue: true
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false
       },
-      deletedAt: {
+      deleted_at: {
         type: Sequelize.DATE,
         allowNull: true
       }

@@ -1,10 +1,8 @@
 'use strict';
 
-/** @type {import('sequelize-cli').Migration} */
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('certificates', {
+    await queryInterface.createTable('module_progress', {
       id: {
         type: Sequelize.UUID,
         defaultValue: Sequelize.UUIDV4,
@@ -13,41 +11,45 @@ module.exports = {
       },
       student_id: {
         type: Sequelize.UUID,
+        allowNull: false,
         references: {
           model: 'students',
           key: 'id'
         },
-        onDelete: 'CASCADE',
-        allowNull: false
+        onDelete: 'CASCADE'
       },
-      course_id: {
+      module_id: {
         type: Sequelize.UUID,
+        allowNull: false,
         references: {
-          model: 'courses',
+          model: 'modules',
           key: 'id'
         },
-        onDelete: 'CASCADE',
-        allowNull: false
+        onDelete: 'CASCADE'
       },
-      issue_date: {
+      status: {
+        type: Sequelize.ENUM('not_started', 'in_progress', 'completed'),
+        allowNull: false,
+        defaultValue: 'not_started'
+      },
+      progress_percent: {
+        type: Sequelize.DECIMAL(5, 2),
+        allowNull: false,
+        defaultValue: 0.00
+      },
+      completed_at: {
         type: Sequelize.DATE,
-        defaultValue: Sequelize.NOW
-      },
-      certificate_url: {
-        type: Sequelize.STRING,
-        validate: {
-          isUrl: true
-        }
+        allowNull: true
       },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updated_at: {
         type: Sequelize.DATE,
         allowNull: false,
-        defaultValue: Sequelize.NOW
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       deleted_at: {
         type: Sequelize.DATE,
@@ -57,6 +59,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('certificates');
+    await queryInterface.dropTable('module_progress');
   }
 };

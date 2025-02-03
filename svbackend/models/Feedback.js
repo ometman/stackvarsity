@@ -13,12 +13,23 @@ const Feedback = sequelize.define('Feedback', {
         type: DataTypes.INTEGER,
         validate: { min: 1, max: 5 }
     },
-    comment: DataTypes.TEXT
-}, { timestamps: true, 
+    comment: {
+        type: DataTypes.TEXT,
+        allowNull: true
+    },
+    shares_count: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        allowNull: false,
+        validate: { min: 0 } // Ensures no negative values
+    }
+}, { 
+    timestamps: true, 
     tableName: 'feedbacks',
     paranoid: true 
 });
 
+// Associations
 Feedback.belongsTo(Student, { foreignKey: 'student_id', onDelete: 'CASCADE' });
 Feedback.belongsTo(Course, { foreignKey: 'course_id', onDelete: 'CASCADE' });
 

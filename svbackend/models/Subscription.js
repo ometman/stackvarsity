@@ -36,7 +36,7 @@ const Subscription = sequelize.define('Subscription', {
         }
     },
     renewal_frequency: {
-        type: DataTypes.ENUM('Monthly', 'Yearly'),
+        type: DataTypes.ENUM('Monthly', 'Quarterly', 'Yearly', 'No Renewal'),
         allowNull: true
     },
     auto_renew: {

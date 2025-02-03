@@ -27,29 +27,6 @@ module.exports = {
                     len: [2, 40]
                 }
             },
-            email: {
-                type: Sequelize.STRING,
-                allowNull: false,
-                unique: true,
-                validate: {
-                    isEmail: true,
-                    notEmpty: true
-                }
-            },
-            password_hash: {
-                type: Sequelize.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true
-                }
-            },
-            password_salt: {
-                type: Sequelize.STRING,
-                allowNull: false,
-                validate: {
-                    notEmpty: true
-                }
-            },
             role_id: {
                 type: Sequelize.UUID,
                 references: {
