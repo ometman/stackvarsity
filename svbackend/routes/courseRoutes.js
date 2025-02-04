@@ -1,10 +1,9 @@
 const express = require('express');
 const { getCourses } = require('../api/courses/getCourses');
-const { getCourseById } = require('../api/courses/getCourse');
-const { createCourse } = require('../api/courses/createCourse');
-const { updateCourse } = require('../api/courses/updateCourse');
-const { deleteCourse } = require('../api/courses/deleteCourse');
-
+const { getCourseById } = require('../controllers/courses/getCourse');
+const { createCourse } = require('../controllers/courses/createCourse');
+const { updateCourse } = require('../controllers/courses/updateCourse');
+const { deleteCourse } = require('../controllers/courses/deleteCourse');
 
 const router = express.Router();
 
