@@ -1,9 +1,8 @@
 const express = require('express');
-const { getStudents } = require('../api/students/getStudents');
-const { getStudentById } = require('../api/students/getStudent');
-const { createStudent } = require('../api/students/createStudent');
-const { updateStudent } = require('../api/students/updateStudent');
-const { deleteStudent } = require('../api/students/deleteStudent');
+const { getStudents, getStudentById } = require('../controllers/students/getStudents');
+const { createStudent } = require('../controllers/students/createStudent');
+const { updateStudent } = require('../controllers/students/updateStudent');
+const { deleteStudent } = require('../controllers/students/deleteStudent');
 
 const router = express.Router();
 
