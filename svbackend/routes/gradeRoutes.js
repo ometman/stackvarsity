@@ -2,31 +2,30 @@ const express = require('express');
 
 const { 
     getLessonGrade,
-    getModuleGrade,
-    getCourseGrade,
-    getOverallGradeForStudent,
-} = require('../controllers/grades/getGradesController');
-
-const { 
     updateLessonGrade,
+} = require('../controllers/grades/lessonGradeController');
+
+const {
+    getModuleGrade,
     updateModuleGrade,
+} = require('../controllers/grades/moduleGradeController');
+
+const {
+    getCourseGrade,
     updateCourseGrade,
-    updateOverallGradeForStudent,
-} = require('../controllers/grades/updateGradesController');
+} = require('../controllers/grades/courseGradeController');
 
 const router = express.Router();
 
-// get grades
-router.get('/', getOverallGradeForStudent)
-router.get('/:id', getLessonGrade);
-router.get('/:id', getModuleGrade);
-router.get('/:id', getCourseGrade);
-router.get('/:id', getOverallGradeForStudent);
+router.get('/course/:student_id/:course_id', getCourseGrade);
+router.get('/lesson/:student_id/:lesson_id', getLessonGrade);
+router.get('/module/:student_id/:module_id', getModuleGrade);
 
-// update grades
-router.put('/:id', updateLessonGrade);
-router.put('/:id', updateModuleGrade);
-router.put('/:id', updateCourseGrade);
-router.put('/:id', updateOverallGradeForStudent);
+// GET http://localhost:3000/progress/course/{student_id}/{course_id}
+
+// update route
+router.put('/course/:student_id/:course_id', updateCourseGrade);
+router.put('/lesson/:student_id/:lesson_id', updateLessonGrade);
+router.put('/module/:student_id/:module_id', updateModuleGrade);
 
 module.exports = router;
