@@ -1,4 +1,4 @@
-const pool = require('../utils/db');
+const pool = require('../../utils/dbPool');
 
 // Update a student
 exports.updateStudent = async (req, res) => {

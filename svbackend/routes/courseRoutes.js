@@ -1,5 +1,5 @@
 const express = require('express');
-const { getCourses } = require('../api/courses/getCourses');
+const { getCourses } = require('../controllers/courses/getCourses');
 const { getCourseById } = require('../controllers/courses/getCourse');
 const { createCourse } = require('../controllers/courses/createCourse');
 const { updateCourse } = require('../controllers/courses/updateCourse');

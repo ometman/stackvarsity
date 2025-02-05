@@ -1,4 +1,5 @@
-const pool = require('../utils/db');
+const pool = require('../../utils/dbPool');
+
 // Create a new student
 exports.createStudent = async (req, res) => {
   const { first_name, last_name, email, username, password, date_of_birth, country } = req.body; // Add other necessary fields

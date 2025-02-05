@@ -1,5 +1,5 @@
 const app = require('./app');
-const sequelize = require('./utilities/dbSequel');
+const sequelize = require('./utils/dbSequel');
 
 const PORT = process.env.port || 5000;
 
@@ -21,8 +21,8 @@ app.get('/', (req, res) => {
     res.json({
       message: 'Welcome to STACKVARSITY: Your Web Development Learning Platform API',
       routes: {
-        users: '/api/users',
-        courses: '/api/courses',
+        users: '/users',
+        courses: '/courses',
       },
     });
   });

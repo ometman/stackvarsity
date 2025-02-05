@@ -1,4 +1,4 @@
-const pool = require('../utils/db');
+const pool = require('../../utils/dbPool');
 
 /**
  * Get lesson progress for a student
