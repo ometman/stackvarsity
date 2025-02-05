@@ -3,7 +3,7 @@ const express = require('express');
 const { 
     getLessonProgress,
     updateLessonProgress,
-} = require('../controllers/progress/courseProgressController');
+} = require('../controllers/progress/lessonProgressController');
 
 const {
     getModuleProgress,
@@ -15,11 +15,14 @@ const {
     updateCourseProgress,
 } = require('../controllers/progress/courseProgressController');
 
+const { getAllProgress } = require('../controllers/progress/allProgressController');
+
 const router = express.Router();
 
 router.get('/lesson/:student_id/:lesson_id', getLessonProgress);
 router.get('/module/:student_id/:module_id', getModuleProgress);
 router.get('/course/:student_id/:course_id', getCourseProgress);
+router.get('/', getAllProgress);
 
 // GET http://localhost:3000/progress/course/{student_id}/{course_id}
 

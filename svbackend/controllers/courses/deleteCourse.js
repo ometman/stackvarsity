@@ -1,4 +1,4 @@
-const pool = require('../utils/db');
+const pool = require('../../utils/dbPool');
 
 // Delete a course
 exports.deleteCourse = async (req, res) => {

@@ -1,4 +1,4 @@
-const pool = require('../utils/db');
+const pool = require('../../utils/dbPool');
 
 // Get a single student by ID
 exports.getStudentById = async (req, res) => {

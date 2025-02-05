@@ -1,4 +1,4 @@
-const pool = require('../utils/db');
+const pool = require('../../utils/dbPool');
 
 /**
  * Get the module grade for a student
@@ -22,7 +22,7 @@ const pool = require('../utils/db');
   }
 };
 
-const updateModuleGrade = async (req, res) => {
+exports.updateModuleGrade = async (req, res) => {
     try {
         const { student_id, module_id } = req.params;
         const { grade } = req.body;
