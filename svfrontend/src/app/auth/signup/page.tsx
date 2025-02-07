@@ -3,11 +3,11 @@
 import { useRouter } from 'next/navigation';
 import { useState } from "react";
 import Image from 'next/image';
-import apiClient from '../../../utils/api';
+import apiClient from '../../utils/api';
 import dynamic from 'next/dynamic';
 
-const Header = dynamic(() => import("../../../components/Header"), { ssr: false});
-const Footer = dynamic(() => import("../../../components/Footer"), {ssr: false});
+const Header = dynamic(() => import("../../components/Header"), { ssr: false});
+const Footer = dynamic(() => import("../../components/Footer"), {ssr: false});
 
 export default function SignupPage() {
   const [email, setEmail] = useState("");
